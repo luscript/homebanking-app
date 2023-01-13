@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: beige;
+    height: 100vh;
+}
+
+#app {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.table td, .table th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 170px;
+    word-break: break-all;
+}
+
+
+
+.tableButton {
+    gap: 1rem;
+}
+
+
+.clientManager {
+    display: flex;
+    gap: 2rem;
+    height: 50%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.modifyClients {
+    display: flex;
+    gap: 2rem;
+    max-width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+pre {
+    width: 100%;
+}
+
+.restResponse {
+    width: 100%;
+}
+
+
+form {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+tr {
+    display: flex;
+    
+}
+
+th {
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+}
+
+
+
+.manageClients, .addClients {
+    width: 100%;
+}
+
+.modifyClient, .addClient {
+    color: white;
+    background-color: #655CC9;
+}
+
+@media screen and (max-width: 500px){
+    .clientManager {
+        min-width: 80%;
+    }
+}
+
+@media screen and (max-width: 603px){
+    .clientManager {
+        min-width: 80%;
+    }
+}

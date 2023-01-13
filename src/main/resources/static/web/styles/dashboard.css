@@ -1,0 +1,162 @@
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+
+
+.btn-primary {
+    background-color:  #655CC9;
+}
+
+#logo {
+    height: 65px;
+    color: black;
+}
+
+#piggylogo {
+    height: 150px;
+}
+
+
+.icon {
+    background-color: #202225 !important;
+    color: white !important;
+}
+
+#logo2 {
+    height: 50px;
+}
+
+.bg-surface-primary, .py-6 {
+    background-color: #202225c2 !important;
+}
+
+#app, body {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #202225 !important;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h4 {
+    color: white !important;
+    text-shadow: 0 0 2px rgb(0, 0, 0);
+}
+
+.nav-item > a, .nav-link {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+.nav-link > i {
+    color: rgb(0, 0, 0) !important;
+    font-size: 1.2rem !important;
+}
+
+.nav-item a:hover, .nav-item a:hover .bi { 
+    color: black !important; 
+}
+
+.menu a:hover {
+    color: white !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.cardbg {
+    background-color: #f28f8f9e;
+    min-height: 10rem;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.784);
+    /* background-color: #f28f8f69; */
+    border-radius: 10px;
+}
+
+.navbar {
+    background-color: #F28F8F!important;
+    border-right: none !important;
+    overflow-y: hidden !important;
+}
+
+
+#transactionsButton {
+    font-size: .9rem;
+    background-color: #EBEBEB;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    padding: .5rem;
+    border-radius: 10px;
+    color: #000000;
+    transition: 0.2s;
+}
+
+#transactionsButton:hover {
+    background-color: #938DD9;
+}
+
+footer {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7BABA;
+    box-shadow: 8px 8px rgba(0, 0, 0, 0.784);
+    width: 15rem;
+    border-radius: 50px;
+    margin-bottom: .8rem;
+    align-self: center;
+    justify-self: end;  
+}
+
+.socialMedia {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.h-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.active {
+    border-right: 7px solid black;
+}
+
+.footericon:hover {
+    animation: bounce;
+    animation-duration: 0.5s;
+}
+
+@media (max-width: 352px) {
+    .h3 {
+        font-size: 1rem !important;
+    }
+    .h6 {
+        font-size: .7rem !important;
+    }
+}
+
+
+
+
+
+
+
+
+

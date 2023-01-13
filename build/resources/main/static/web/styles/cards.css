@@ -1,0 +1,434 @@
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+
+.btn-primary {
+    background-color:  #655CC9;
+}
+
+
+h1, h2, h4 {
+  color: white !important;
+}
+
+span {
+    color: #EBEBEB !important;
+}
+
+#logo { 
+  height: 60px;
+  width: 110px;
+  color: black;
+}
+
+#logo2 {
+  height: 60px;
+}
+
+.bg-surface-primary {
+  background-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(10,9,14,1) 30%, rgba(10,9,14,1) 45%, rgba(10,9,14,1) 55%, rgba(10,9,14,1) 74%, rgba(0,0,0,1) 100%);
+}
+
+.h-screen {
+  background-image: url(../assets/bryan-goff-f7YQo-eYHdM-unsplash.jpg);
+  width: 100%;
+
+}
+
+.main {
+  background-image: url(../assets/bryan-goff-f7YQo-eYHdM-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+}
+  
+.icon {
+    background-color: #202225 !important;
+    color: white !important;
+}
+
+#logo2 {
+    height: 50px;
+}
+
+#app, body {
+    min-height: 100vh !important;
+    width: 100% !important;
+    height: 100% !important;    
+}
+ 
+.main {
+    margin: 0;
+    padding: 0;
+}
+
+/* h1, h4 {
+    text-shadow: 0 0 2px rgb(0, 0, 0);
+} */
+
+.nav-item > a, .nav-link {
+    color: #FFFF !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+}
+
+.nav-link > i {
+    color: #FFFF !important;
+    font-size: 1.2rem !important;
+}
+
+.nav-item a:hover, .nav-item a:hover .bi { 
+    color: black !important; 
+}
+
+.menu a:hover {
+    color: white !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.cardbg {
+    background-color: #8863aa;
+    
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.784);
+    /* background-color: #f28f8f69; */
+    border-radius: 10px;
+}
+
+.navbar {
+    background-color: #752ab5 !important;
+    border-right: none !important;
+    overflow-y: hidden !important;
+}
+
+
+#transactionsButton {
+    font-size: .9rem;
+    background-color: #EBEBEB;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    padding: .5rem;
+    border-radius: 10px;
+    color: #000000;
+    transition: 0.2s;
+}
+
+#transactionsButton:hover {
+    background-color: #dc9cfc;
+}
+
+footer {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #EBEBEB;
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.784);
+  width: 15rem;
+  border-radius: 50px;
+  margin-bottom: .8rem;
+  align-self: center;
+  justify-self: end;  
+}
+
+.navbar-vertical.navbar-light .navbar-nav>.nav-item>.nav-link.active {
+    background-color: #202225;
+}
+
+
+.nav-link:hover {
+    background-color: #EBEBEB !important;
+}
+
+.socialMedia {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.h-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-link active {
+    border-right: 7px solid #dc9cfc;
+}
+
+.footericon:hover {
+    animation: bounce;
+    animation-duration: 0.5s;
+}
+
+.themeIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.form-check-input {
+    border: none !important;
+}
+
+.carousel-item img {
+    object-fit: contain;    
+    object-position: center; 
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.GOLD {
+    background-image: url("../assets/world.png");
+    border: 4px solid rgb(253, 185, 49, 0.637);
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.TITANIUM {
+    background-image: url("../assets/world.png");
+    border: 4px solid rgba(110, 110, 108, 0.637);
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.SILVER {
+    background-image: url("../assets/world.png");
+    border: 4px solid rgba(198, 198, 195, 0.637);
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.form-check > input {
+  border: 2px solid black !important;
+}
+
+
+/*CARDS*/
+
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i");
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  background-image: linear-gradient(
+    to right top,
+    #a2beeb,
+    #8ecfee,
+    #8edde5,
+    #a4e7d5,
+    #c7eec7
+  );
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+.title {
+  margin-bottom: 30px;
+  color: #162969;
+}
+
+.card {
+    border: none;
+  width: 320px;
+  height: 190px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective: 600px;
+  background-color: inherit;
+}
+
+.card__part {
+  box-shadow: 1px 1px #aaa3a3;
+  top: 0;
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  display: inline-block;
+  width: 320px;
+  height: 190px; /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.card__front {
+  padding: 18px;
+  -webkit-transform: rotateY(0);
+  -moz-transform: rotateY(0);
+}
+
+.card__back {
+  padding: 18px 0;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+}
+
+.card__black-line {
+  margin-top: 5px;
+  height: 38px;
+  background-color: #303030;
+}
+
+.card__logo {
+  height: 20px;
+}
+
+.card__front-logo {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+}
+.card__square {
+    position: relative;
+    top: -8px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.card_number {
+  display: block;
+  width: 100%;
+  word-spacing: 4px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.card__space-75 {
+  width: 33%;
+  float: left;
+}
+
+.card__space-25 {
+  width: 33%;
+  float: left;
+}
+
+.card__label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.card__info {
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card__back-content {
+  padding: 15px 15px 0;
+}
+.card__secret--last {
+  color: #303030;
+  text-align: right;
+  margin: 0;
+  font-size: 14px;
+}
+
+.card__secret {
+  padding: 5px 12px;
+  background-color: #fff;
+  position: relative;
+}
+
+.card__secret:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  height: calc(100% + 6px);
+  width: calc(100% - 42px);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 5px,
+    #f9f9f9 5px,
+    #f9f9f9 10px
+  );
+}
+
+.card__back-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+}
+
+.card__back-square {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.card:hover .card__front {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.card:hover .card__back {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+}
+
+
+@media (max-width: 352px) {
+    .h3 {
+        font-size: .8rem !important;
+    }
+    .h6 {
+        font-size: .7rem !important;
+    }
+    .card__back, .card__front {
+      width: 100%;
+    }
+    .card_number {
+      font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+

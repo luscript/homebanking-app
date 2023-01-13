@@ -1,0 +1,213 @@
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+
+
+.btn-primary {
+    background-color:  #655CC9;
+}
+
+span {
+    color: #EBEBEB !important;
+}
+
+#logo { 
+    height: 60px;
+    width: 110px;
+    color: black;
+}
+
+#logo2 {
+    height: 60px;
+}
+
+.icon {
+    background-color: #202225 !important;
+    color: white !important;
+}
+
+#app, body {
+    width: 100% !important;
+    height: 100% !important;    
+}
+ 
+.main {
+    margin: 0;
+    padding: 0;
+}
+
+ h1, h4, h6 {
+    color: white !important;
+} 
+
+.nav-item > a, .nav-link {
+    color: #FFFF !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+}
+
+.nav-link > i {
+    color: #FFFF !important;
+    font-size: 1.2rem !important;
+}
+
+.nav-item a:hover, .nav-item a:hover .bi { 
+    color: black !important; 
+}
+
+.menu a:hover {
+    color: white !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg-surface-primary {
+    background-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(10,9,14,1) 30%, rgba(10,9,14,1) 45%, rgba(10,9,14,1) 55%, rgba(10,9,14,1) 74%, rgba(0,0,0,1) 100%);
+}
+
+.cardbg {
+    background-color: rgba(0, 0, 0, 0.637);
+    border: 2px solid rgb(136, 99, 170, 0.637);
+    
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.784);
+    /* background-color: #f28f8f69; */
+    border-radius: 10px;
+}
+
+.icon-shape {
+    background-color: rgb(136, 99, 170, 0.637) !important;
+}
+
+.navbar {
+    background-color: #752ab5 !important;
+    border-right: none !important;
+    overflow-y: hidden !important;
+}
+
+
+.transactionsButton {
+    font-size: .9rem;
+    background-color: #EBEBEB;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+    padding: .5rem;
+    border-radius: 10px;
+    color: #000000;
+    transition: 0.2s;
+}
+
+.transactionsButton:hover {
+    background-color: #dc9cfc;
+}
+
+footer {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EBEBEB;
+    box-shadow: 8px 8px rgba(0, 0, 0, 0.784);
+    width: 15rem;
+    border-radius: 50px;
+    margin-bottom: .8rem;
+    align-self: center;
+    justify-self: end;  
+}
+
+.navbar-vertical.navbar-light .navbar-nav>.nav-item>.nav-link.active {
+    background-color: #202225;
+}
+
+
+.nav-link:hover {
+    background-color: #EBEBEB !important;
+}
+
+.socialMedia {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.h-screen {
+    background-image: url(../assets/bryan-goff-f7YQo-eYHdM-unsplash.jpg);
+    width: 100%;
+
+}
+
+.main {
+    background-image: url(../assets/bryan-goff-f7YQo-eYHdM-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.nav-link active {
+    border-right: 7px solid #dc9cfc;
+}
+
+.footericon:hover {
+    animation: bounce;
+    animation-duration: 0.5s;
+}
+
+.themeIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.form-check-input {
+    border: none !important;
+}
+
+.carousel-item img {
+    object-fit: contain;    
+    object-position: center; 
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+@media (max-width: 352px) {
+    .h3 {
+        font-size: .8rem !important;
+    }
+    .h6 {
+        font-size: .7rem !important;
+    }
+}
+
+
+/* @media (max-width: 992px) {
+    #logo {
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 150px;
+        height: 150px;
+        color: black;
+    }
+} */
+
+
+
+
+
+
+
+
+
