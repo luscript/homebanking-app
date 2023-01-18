@@ -29,6 +29,12 @@ public class TransactionServiceImp implements TransactionService{
     }
 
     @Override
+    public void deleteTransaction(Long id) {
+        Transaction transaction = transactionRepository.findById(id).get();
+        transactionRepository.delete(transaction);
+    }
+
+    @Override
     public void save(Transaction transaction) {
         transactionRepository.save(transaction);
     }

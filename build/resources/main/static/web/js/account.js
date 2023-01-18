@@ -21,6 +21,8 @@ createApp({
                 .then(accountData => {
                     this.account = accountData.data;
                     this.transactions = this.account.transactions.sort((a, b) => b.id - a.id); 
+                    console.log(this.account)
+                    console.log(this.transactions)
                 })
         },
         tableRowStyle(transactionType) {
@@ -31,6 +33,9 @@ createApp({
                 style.backgroundColor = '#ff928b';
             }
             return style;
+        },
+        click() {
+            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
         }
         
     },

@@ -408,6 +408,9 @@ body {
   -moz-transform: rotateY(0deg);
 }
 
+.swal2-title {
+  color: black !important;
+}
 
 @media (max-width: 352px) {
     .h3 {

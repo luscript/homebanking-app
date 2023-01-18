@@ -31,11 +31,11 @@ public class HomebankingApplication {
 		return (args) -> {
 			Client lucia = new Client("Lucia", "Vidal", "lucividal09@gmail.com", passwordEncoder.encode("lucia"));
 			Client admin = new Client("admin", "admin", "admin@admin.com", passwordEncoder.encode("lucia"));
-			Client dante = new Client("Dante", "Vilches", "dantevilches@gmail.com", passwordEncoder.encode("fh36q8"));
-			Account account1 = new Account("VIN001", LocalDateTime.now(), 5000.00);
-			Account account2 = new Account("VIN002", LocalDateTime.now().plusDays(1), 7500.00);
-			Account account3 = new Account("VIN003", LocalDateTime.now(), 10000.00);
-			Account account4 = new Account("VIN004", LocalDateTime.now().plusDays(1), 2000.00);
+			Client dante = new Client("Dante", "Vilches", "dantevilches@gmail.com", passwordEncoder.encode("dante"));
+			Account account1 = new Account("VIN001", LocalDateTime.now(), 5000.00, true, AccountType.CHECKING);
+			Account account2 = new Account("VIN002", LocalDateTime.now().plusDays(1), 7500.00, true, AccountType.SAVING);
+			Account account3 = new Account("VIN003", LocalDateTime.now(), 10000.00, true, AccountType.CHECKING);
+			Account account4 = new Account("VIN004", LocalDateTime.now().plusDays(1), 2000.00, true, AccountType.SAVING);
 
 			Card card1 = new Card(lucia.getFirstName() + " " + lucia.getLastName(), "12-23-421-234", 123, LocalDate.now(),
 					LocalDate.now().plusYears(5), CardType.CREDIT, CardColor.GOLD);
@@ -45,7 +45,7 @@ public class HomebankingApplication {
 					LocalDate.now().plusYears(10), CardType.DEBIT, CardColor.SILVER);
 
 
-			Transaction transaction1 = new Transaction(TransactionType.CREDIT, 150.00, "pruebaa", LocalDateTime.now());
+		/*	Transaction transaction1 = new Transaction(TransactionType.CREDIT, 150.00, "pruebaa", LocalDateTime.now(), );
 			Transaction transaction2 = new Transaction(TransactionType.DEBIT, 150.00, "pruebaa2", LocalDateTime.now());
 			Transaction transaction3 = new Transaction(TransactionType.DEBIT, 1200.00, "pruebaa3", LocalDateTime.now());
 			Transaction transaction4 = new Transaction(TransactionType.CREDIT, 1400.00, "pruebaa4", LocalDateTime.now());
@@ -57,7 +57,7 @@ public class HomebankingApplication {
 			account1.addTransaction(transaction6);
 			account2.addTransaction(transaction2);
 			account3.addTransaction(transaction3);
-			account4.addTransaction(transaction4);
+			account4.addTransaction(transaction4);*/
 
 			lucia.addAccount(account1);
 			lucia.addAccount(account2);
@@ -68,14 +68,17 @@ public class HomebankingApplication {
 			List<Integer> payments2 = Arrays.asList(6,12,24);
 			List<Integer> payments3 = Arrays.asList(6,12,24,36);
 
-			Loan loan1 = new Loan("Mortgage", 500000.00, payments1);
-			Loan loan2 = new Loan("Personal", 500000.00, payments2);
-			Loan loan3= new Loan("Car loan", 500000.00, payments3);
+			Loan loan1 = new Loan("Mortgage", 500000.00, payments1, 35);
+			Loan loan2 = new Loan("Personal", 100000.00, payments2, 30);
+			Loan loan3= new Loan("Car loan", 300000.00, payments3, 25);
 
 			ClientLoan clientLoan1 = new ClientLoan(400000.00, payments1.get(4), LocalDateTime.now());
 
 			loan1.addClientLoan(clientLoan1);
 			lucia.addClientLoan(clientLoan1);
+
+			lucia.setEnabled(true);
+			dante.setEnabled(true);
 
 			lucia.addCard(card1);
 			lucia.addCard(card2);
@@ -99,12 +102,12 @@ public class HomebankingApplication {
 
 
 
-			transactionRepository.save(transaction1);
+/*			transactionRepository.save(transaction1);
 			transactionRepository.save(transaction2);
 			transactionRepository.save(transaction3);
 			transactionRepository.save(transaction4);
 			transactionRepository.save(transaction5);
-			transactionRepository.save(transaction6);
+			transactionRepository.save(transaction6);*/
 
 			cardRepository.save(card1);
 			cardRepository.save(card2);

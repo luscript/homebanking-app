@@ -41,6 +41,11 @@ public class CardController {
         return cardService.getCardsDTO(cardService.getCards());
     }
 
+    @DeleteMapping("/clients/current/cards")
+    public void deleteCard(@RequestParam Long id) {
+        cardService.deleteCard(id);
+    }
+
     public String getRandomNumber(int min, int max) {
         Random random = new Random();
         String number = random.nextInt(max - min) + min + "-" + random.nextInt(max - min) + min + "-" +

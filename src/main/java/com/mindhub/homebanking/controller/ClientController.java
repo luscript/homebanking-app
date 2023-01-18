@@ -1,10 +1,7 @@
 package com.mindhub.homebanking.controller;
 
 import com.mindhub.homebanking.dtos.ClientDTO;
-import com.mindhub.homebanking.models.Account;
-import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.models.ConfirmationToken;
-import com.mindhub.homebanking.models.PasswordResetToken;
+import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ConfirmationTokenRepository;
 import com.mindhub.homebanking.repositories.PasswordResetTokenRepository;
@@ -24,6 +21,7 @@ import org.springframework.mail.SimpleMailMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -71,7 +69,7 @@ public class ClientController {
     }
 
 
-    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+    @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password, HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
@@ -85,7 +83,7 @@ public class ClientController {
         }
 
         String accountNumber = getRandomNumber(0000,9999);
-        Account account = new Account(accountNumber, LocalDateTime.now(), 0.00);
+        Account account = new Account(accountNumber, LocalDateTime.now(), 0.00, true, AccountType.CHECKING);
         Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         accountRepository.save(account);
         client.addAccount(account);
@@ -110,8 +108,9 @@ public class ClientController {
     public ResponseEntity<Object> confirmUserAccount(@RequestParam("token")String confirmationToken)
     {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+        LocalDateTime today = LocalDateTime.now().minusHours(24);
 
-        if(token != null)
+        if(token != null || today.isAfter(token.getCreatedDate()))
         {
             Client client = clientService.findByEmail(token.getClient().getEmail());
             client.setEnabled(true);
@@ -119,13 +118,24 @@ public class ClientController {
         }
         else
         {
-            return new ResponseEntity<>("invalid or broken link",HttpStatus.FORBIDDEN);
+            ConfirmationToken newToken = new ConfirmationToken(token.getClient());
+            confirmationTokenRepository.save(newToken);
+
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(token.getClient().getEmail());
+            mailMessage.setSubject("Complete Registration!");
+            mailMessage.setFrom("chand312902@gmail.com");
+            mailMessage.setText("To confirm your account, please click here : "
+                    +"http://localhost:8080/web/confirm-account.html?token="+newToken.getConfirmationToken());
+
+            emailSenderService.sendEmail(mailMessage);
+            return new ResponseEntity<>("invalid link or expired token. We sent you a new one",HttpStatus.FORBIDDEN);
         }
 
         return new ResponseEntity<>("account activated",HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(path = "/password-token", method = RequestMethod.POST)
+    @PostMapping("/password-token")
     public ResponseEntity<Object> sendPasswordResetToken(@RequestParam String email) {
         Client client = clientService.findByEmail(email);
         if (client == null) {
@@ -146,7 +156,7 @@ public class ClientController {
         return new ResponseEntity<>("Token sent", HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(path = "/reset-password", method = RequestMethod.POST)
+    @PostMapping("/reset-password")
     public ResponseEntity<Object> resetPassword(@RequestParam("token")String passwordResetToken, @RequestParam String password) {
         PasswordResetToken token = passwordResetTokenRepository.findByPasswordResetToken(passwordResetToken);
         if(token != null) {

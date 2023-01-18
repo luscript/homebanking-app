@@ -184,6 +184,29 @@ footer {
     overflow: hidden;
 }
 
+.bi-x-circle {
+    color: white !important;
+    font-weight: bolder;
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    font-size: 1.4rem;
+}
+
+.bi-x-circle:hover {
+    color: red !important;
+}
+
+.swal2-label {
+    color: black !important;
+}
+
+.credit-card-i {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
 @media (max-width: 352px) {
     .h3 {
         font-size: .8rem !important;

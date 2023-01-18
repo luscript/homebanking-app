@@ -9,5 +9,6 @@ public interface TransactionService {
 
     public List<Transaction> getTransactions();
     public List<TransactionDTO> getTransactionsDTO(List<Transaction> transactions);
+    public void deleteTransaction(Long id);
     public void save(Transaction transaction);
 }

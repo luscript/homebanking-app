@@ -24,8 +24,18 @@ createApp({
 			} else {
 				axios.post('/api/login', `email=${this.email}&password=${this.password}`)
 					.then(response => window.location.href = "http://localhost:8080/web/accounts.html")
-					.catch(err =>
-						Swal.fire('Wrong credentials', 'Try again or sign up if you dont have an account', 'error'))
+					.catch(err => {
+						let error = err.response.data.message;
+						console.log(error);
+						if(error == "User doesn't exist") {
+							Swal.fire('Unknown user', ':C', 'error')
+						} else if(error == "Wrong credentials") {
+							Swal.fire('Wrong credentials', ':C', 'error')
+						} else {
+							Swal.fire('Please activate your account with the link sent to your email', ':C', 'error')
+						}
+
+					})
 			}
 		},
 		signup() {
@@ -36,11 +46,7 @@ createApp({
 			} else {
 				axios.post('/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
 					.then(response => window.location.href = "http://localhost:8080/web/process_register.html")
-					.catch(err => Swal.fire({
-						icon: 'error',
-						title: 'Prueba',
-						text: 'pruebaaa'
-					}))
+					.catch(err => Swal.fire('User already registered', ':C', 'error'))
 			}
 		}
 	}

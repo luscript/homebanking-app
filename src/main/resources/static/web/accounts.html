@@ -163,12 +163,15 @@
                                                 <span class="h6 font-semibold text-sm d-block mb-2">Account
                                                     number</span>
                                                 <span class="h3 font-semibold  d-block mb-2">{{account.number}}</span>
-                                                <span class="h6 font-semibold text-sm d-block mb-2">Budget</span>
+                                                <span class="h6 font-semibold text-sm d-block ">Balance</span>
                                                 <span class="h3 font-bold mb-0">${{account.balance}}</span>
+                                                <span class="h6 font-semibold text-sm d-block mb-2 mt-2">Type</span>
+                                                <span class="h4 font-bold mb-0">{{account.accountType}}</span>
                                             </div>
                                             <div class="col-auto">
+                                                <i class="bi bi-x-circle" @click="disableAccount(account)"></i>
                                                 <div
-                                                    class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                                    class="icon icon-shape bg-tertiary text-white text-lg rounded-circle credit-card-i">
                                                     <i class="bi bi-credit-card"></i>
                                                 </div>
                                             </div>

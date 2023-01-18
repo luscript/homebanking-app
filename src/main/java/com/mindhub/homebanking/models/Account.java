@@ -16,9 +16,19 @@ public class Account {
     private String number;
     private LocalDateTime creationDate;
     private Double balance;
+    private boolean isEnabled;
+    private AccountType accountType;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<Transaction> transactions = new HashSet<>();
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
@@ -26,10 +36,12 @@ public class Account {
 
     public Account() {}
 
-    public Account(String number, LocalDateTime creationDate, Double balance) {
+    public Account(String number, LocalDateTime creationDate, Double balance, boolean isEnabled, AccountType accountType) {
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
+        this.isEnabled = isEnabled;
+        this.accountType = accountType;
     }
 
     public Long getId() { return id; }
@@ -71,5 +83,12 @@ public class Account {
     public void addTransaction(Transaction transaction) {
         transaction.setAccount(this);
         transactions.add(transaction);
+    }
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 }

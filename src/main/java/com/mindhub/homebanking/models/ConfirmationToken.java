@@ -1,8 +1,11 @@
 package com.mindhub.homebanking.models;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,15 +16,14 @@ public class ConfirmationToken {
     @GenericGenerator(name = "native", strategy = "native")
     private long tokenid;
     private String confirmationToken;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    LocalDateTime createdDate;
     @OneToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
     private Client client;
     public ConfirmationToken() {}
 
     public ConfirmationToken(Client client) {
         this.client = client;
-        this.createdDate = new Date();
+        this.createdDate = LocalDateTime.now();
         this.confirmationToken = UUID.randomUUID().toString();
     }
 
@@ -41,11 +43,11 @@ public class ConfirmationToken {
         this.confirmationToken = confirmationToken;
     }
 
-    public Date getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 

@@ -11,5 +11,6 @@ public interface CardService {
     public List<Card> getCards();
     public CardDTO getCardDTO(Card card);
     public List<CardDTO> getCardsDTO(List<Card> cards);
+    public void deleteCard(Long id);
     public void save(Card card);
 }

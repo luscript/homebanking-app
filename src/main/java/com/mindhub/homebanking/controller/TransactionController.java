@@ -77,8 +77,9 @@ public class TransactionController {
             return new ResponseEntity<>("not enough founds", HttpStatus.FORBIDDEN);
         }
 
-        Transaction debitTransaction = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now());
-        Transaction creditTransaction = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now());
+        Transaction debitTransaction = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now(), originAccount.getBalance()-amount);
+        Transaction creditTransaction = new Transaction(TransactionType.CREDIT, amount, description, LocalDateTime.now(), destinyAccount.getBalance()+amount);
+
 
         debitTransaction.setDescription(description + " " + destinyNumber);
         creditTransaction.setDescription(description + " " + originNumber);

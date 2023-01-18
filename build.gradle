@@ -26,6 +26,7 @@ dependencies {
 	implementation 'de.vinado.boot:mail-extensions-concurrent-javamail-spring-boot-starter:2.0.0'
 	implementation 'de.vinado.boot:mail-extensions-dkim-javamail-spring-boot-starter:2.0.0'
 	implementation 'de.vinado.boot:spring-boot-dkim-javamail:1.2.2'
+	implementation 'org.microprofile-ext.restclient-ext:configurable-errorresponse-handler:1.0.0'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
