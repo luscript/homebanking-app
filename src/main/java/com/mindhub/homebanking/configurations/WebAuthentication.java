@@ -34,7 +34,12 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
                     throw new DisabledException("User not enabled");
                 } else {
                     String authority = "CLIENT";
-                    if (client.getEmail().equals("admin@admin.com")) authority = "ADMIN";
+                    client.setAdmin(false);
+                    if (client.getEmail().contains("admin")) {
+                        authority = "ADMIN";
+                        client.setAdmin(true);
+                    }
+                    clientRepository.save(client);
                     return new User(client.getEmail(), client.getPassword(), AuthorityUtils.createAuthorityList(authority));
                 }
             } else {

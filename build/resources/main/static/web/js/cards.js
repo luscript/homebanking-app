@@ -11,7 +11,8 @@ createApp({
             type: undefined,
             color: undefined,
             cardNumber: '',
-            date: ''
+            date: '',
+            toAccount: ''
         }
     },
     created() {
@@ -37,7 +38,10 @@ createApp({
             axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
         },
         async createCard() {
-            if(!this.type || !this.color) {
+            if(!this.toAccount) {
+                this.toAccount = 'a';
+            }
+            if(!this.type || !this.color || !this.toAccount) {
                 swal.fire(`Please fill in all the data`, ">:C", 'error')
             } else {
                 const { value: question } = await swal.fire({
@@ -47,7 +51,7 @@ createApp({
                     showCancelButton: true
                 })
                 if(question) {
-                    axios.post('http://localhost:8080/api/clients/current/cards', `type=${this.type}&color=${this.color}`)
+                    axios.post('http://localhost:8080/api/clients/current/cards', `color=${this.color}&type=${this.type}&accountNumber=${this.toAccount}`)
                     .then(response => this.loadData())
                     .catch(err => swal.fire(`You already have a ${this.type} ${this.color} card`, "we're sorry :P", 'error'))
                 }

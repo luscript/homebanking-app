@@ -5,6 +5,7 @@ import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.CardService;
 import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -31,6 +31,9 @@ public class CardController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/cards/{id}")
     public CardDTO getCard(@PathVariable Long id) {
@@ -61,7 +64,7 @@ public class CardController {
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
     public ResponseEntity<Object> register (
-            @RequestParam CardColor color, @RequestParam CardType type,
+            @RequestParam CardColor color, @RequestParam CardType type, @RequestParam String accountNumber,
             Authentication authentication) {
 
         Client client = clientService.findByEmail(authentication.getName());
@@ -82,7 +85,36 @@ public class CardController {
         cardService.save(card);
         client.addCard(card);
         clientService.save(client);
+       if(type.equals(CardType.DEBIT)) {
+           Account account = accountService.findByNumber(accountNumber);
+           account.setCard(card);
+           accountService.save(account);
+       }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @Transactional
+    @CrossOrigin(origins = "http://127.0.0.1:5501")
+    @PostMapping("/receive-payment")
+    public ResponseEntity<Object> receivePayment(@RequestParam String cardNumber, @RequestParam Integer cvv,
+                                                 @RequestParam Double amount, @RequestParam String description) {
+        Card card = cardService.findByNumber(cardNumber);
+        if(card == null)
+            return new ResponseEntity<>("Card doesn't exist", HttpStatus.FORBIDDEN);
+        if (!Objects.equals(card.getCvv(), cvv))
+            return new ResponseEntity<>("Wrong card information", HttpStatus.FORBIDDEN);
+
+        Account account = card.getAccount();
+        if(account != null) {
+            Transaction transaction = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now(),
+                    account.getBalance()-amount);
+            Set<Transaction> transactions = account.getTransactions();
+            transactions.add(transaction);
+            account.setTransactions(transactions);
+            account.setBalance(account.getBalance()-amount);
+            accountService.save(account);
+        }
+        return new ResponseEntity<>("Payment received", HttpStatus.ACCEPTED);
     }
 
 }

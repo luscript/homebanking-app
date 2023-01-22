@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -79,5 +76,22 @@ public class LoanController {
         clientService.save(client);
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
 
+    }
+
+    @PostMapping(path = "/create-loan")
+    public ResponseEntity<Object>  createLoan(@RequestParam List<Integer> payments, @RequestParam String name) {
+
+        if(loanService.findByName(name) != null) {
+            return new ResponseEntity<>("loan already exists", HttpStatus.FORBIDDEN);
+        }
+
+        if(payments.isEmpty()) {
+            return new ResponseEntity<>("payments is empty", HttpStatus.FORBIDDEN);
+        } else if(name.isEmpty()) {
+            return new ResponseEntity<>("name is empty", HttpStatus.FORBIDDEN);
+        }
+        Loan loan = new Loan(name, 200000.00, payments, 30);
+        loanService.save(loan);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 }

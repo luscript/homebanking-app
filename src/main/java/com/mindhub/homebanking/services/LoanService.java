@@ -13,5 +13,6 @@ public interface LoanService {
     public List<Loan> getLoans();
     public LoanDTO getLoanDTO(Loan loan);
     public List<LoanDTO> getLoansDTO(List<Loan> loans);
+    public Loan findByName(String name);
     public void save(Loan loan);
 }

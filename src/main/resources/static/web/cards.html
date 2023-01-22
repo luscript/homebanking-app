@@ -82,6 +82,12 @@
                                     <i class="bi bi-piggy-bank-fill"></i></i> Loans
                                 </a>
                             </li>
+                            <li class="nav-item" v-if="client.admin">
+                                <a class="nav-link d-flex justify-content-center justify-content-lg-start"
+                                    href="./loan-creation.html">
+                                    <i class="bi bi-plus-square"></i></i> Create loans
+                                </a>
+                            </li>
                         </ul>
                         <!-- Divider -->
                         <img src="./assets/To the stars.gif" alt="piggy" id="piggylogo"
@@ -153,13 +159,13 @@
                                     Add card <i class="bi bi-credit-card-fill"></i>
                                 </button>
                                 <button class="btn btn-danger mx-4" data-bs-toggle="modal"
-                                data-bs-target="#deleteCardModal">Delete card</button>
+                                    data-bs-target="#deleteCardModal">Delete card</button>
                             </div>
                             <h2 class="d-flex justify-content-center mb-2">Credit cards</h2>
                             <!-- Button trigger modal -->
                             <!-- Modal -->
-                            <div class="modal fade" id="createCardModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="createCardModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -194,6 +200,13 @@
                                                     <option value="GOLD">Gold</option>
                                                 </select>
                                             </div>
+                                            <div class="mt-4" v-if="type == 'DEBIT'">
+                                                <h5 class="mb-2">Associate card to account:</h5>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    v-model="toAccount">
+                                                    <option selected :value=account.number v-for="account of client.accounts">{{account.number}}</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -204,8 +217,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="deleteCardModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="deleteCardModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -218,7 +231,8 @@
                                                 <h5 class="mb-2">Card number</h5>
                                                 <select class="form-select" aria-label="Default select example"
                                                     v-model="cardNumber">
-                                                    <option v-for="card of cards" :value="card.number">{{card.number}}</option>
+                                                    <option v-for="card of cards" :value="card.number">{{card.number}}
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -236,7 +250,7 @@
                                 <div class="card">
                                     <div class="card__front card__part" :class="[card.color]">
                                         <img class="card__front-square card__square" src="./assets/chip.png">
-                                    
+
                                         <img class="card__front-logo card__logo" src="./assets/Mi proyecto.png">
                                         <p class="card_number">{{card.number.substr(0, card.number.length-5)}}*****</p>
                                         <div class="card__space-75">
@@ -248,8 +262,11 @@
                                             <p class="card__info">{{card.fromDate.substr(0,7)}}</p>
                                         </div>
                                         <div class="card__space-25">
-                                            <span class="card__label" :style= "[ card.thruDate >= this.date ? {color: 'white !important'} : {color: 'red !important'}]">Thru</span>
-                                            <p class="card__info" :style= "[ card.thruDate >= this.date ? {color: 'white !important'} : {color: 'red !important'}]">{{card.thruDate.substr(0,7)}}</p>
+                                            <span class="card__label"
+                                                :style="[ card.thruDate >= this.date ? {color: 'white !important'} : {color: 'red !important'}]">Thru</span>
+                                            <p class="card__info"
+                                                :style="[ card.thruDate >= this.date ? {color: 'white !important'} : {color: 'red !important'}]">
+                                                {{card.thruDate.substr(0,7)}}</p>
                                         </div>
                                     </div>
 
@@ -277,7 +294,7 @@
                                 <div class="card">
                                     <div class="card__front card__part" :class="[card.color]">
                                         <img class="card__front-square card__square" src="./assets/chip.png">
-                                
+
                                         <img class="card__front-logo card__logo" src="./assets/Mi proyecto.png">
                                         <p class="card_number">{{card.number.substr(0, card.number.length-5)}}*****</p>
                                         <div class="card__space-75">
@@ -307,14 +324,13 @@
 
                                 </div>
                             </div>
-                            <h4 v-if="!debitCards.length"
-                               
-                                class="d-flex justify-content-center mb-4">There are no debit cards associated to your
+                            <h4 v-if="!debitCards.length" class="d-flex justify-content-center mb-4">There are no debit
+                                cards associated to your
                                 account</h4>
                         </div>
 
                     </div>
-                    <footer class="mt-auto" >
+                    <footer class="mt-auto">
                         <div class="socialMedia">
                             <a href="https://www.linkedin.com/in/luc%C3%ADa-vidal-9a9a43259/" target="_blank"><img
                                     src="./assets/linkedin.png" alt="linkedin" class="footericon"></a>

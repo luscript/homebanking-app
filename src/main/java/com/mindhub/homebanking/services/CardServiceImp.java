@@ -51,6 +51,11 @@ public class CardServiceImp implements CardService{
     }
 
     @Override
+    public Card findByNumber(String number) {
+        return cardRepository.findByNumber(number);
+    }
+
+    @Override
     public void save(Card card) {
         cardRepository.save(card);
     }

@@ -20,6 +20,20 @@
     color: black;
 }
 
+.bi-filetype-pdf {
+    font-size: 1.5rem;
+}
+
+.pdfButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: 655CC9;
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+}
+
 #logo2 {
     height: 60px;
 }
@@ -53,12 +67,21 @@ body {
     height: 100% !important;
 }
 
+.date {
+    border-radius: 5px;
+    width: 1.2rem;
+    height: 1.4rem;
+}
+
 .transactionsButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: .9rem;
+    padding: .5rem;
     background-color: #EBEBEB;
     border: 1px solid black;
     box-shadow: 2px 2px black;
-    padding: .5rem;
     border-radius: 10px;
     color: #000000;
     transition: 0.2s;
@@ -193,23 +216,40 @@ footer {
 
 table {
     background-color: rgba(0, 0, 0, 0.637);
-    border: 1px solid white;
+    
 }
 
 h3 {
     color: white;
 }
 
-th {
+#table th {
+    border: none;
     color: rgb(255, 255, 255) !important;
-    font-weight: bold !important;
+    font-weight: bolder !important;
+    font-size: 1rem !important;
 }
 
-td {
+#table {
+    border-collapse: separate;
+}
+
+#table td {
+    border: none;
+    padding: 0.9rem;
+    font-size: 15px !important;
     color: rgb(255, 255, 255) !important;
+    width: 10px;
+    
+}
+
+.form-floating>.form-select {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important ;
 }
 
 .table-responsive {
+   
     border-radius: 10px;
     box-shadow: 10px 10px black !important;
 }
@@ -219,6 +259,8 @@ td {
     width: 20px;
 }
 
+
+
 @media (max-width: 352px) {
     .h3 {
         font-size: .8rem !important;
@@ -226,6 +268,18 @@ td {
 
     .h6 {
         font-size: .7rem !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .headeraccount {
+        font-size: 1.2rem !important  ;
+    }
+}
+
+@media (max-width: 425px) {
+    .date {
+        width: 100px;    
     }
 }
 

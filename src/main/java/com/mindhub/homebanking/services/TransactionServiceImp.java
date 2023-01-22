@@ -6,6 +6,8 @@ import com.mindhub.homebanking.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,11 @@ public class TransactionServiceImp implements TransactionService{
     @Override
     public List<Transaction> getTransactions() {
         return transactionRepository.findAll();
+    }
+
+    @Override
+    public List<Transaction> getFilteredTransactions(LocalDateTime from_date, LocalDateTime thru_date, Long id) {
+        return transactionRepository.getFilteredTransactions(from_date, thru_date, id);
     }
 
     @Override

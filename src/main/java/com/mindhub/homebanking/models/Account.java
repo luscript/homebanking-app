@@ -34,6 +34,9 @@ public class Account {
     @JoinColumn(name="client_id")
     private Client client;
 
+    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+    private Card card;
+
     public Account() {}
 
     public Account(String number, LocalDateTime creationDate, Double balance, boolean isEnabled, AccountType accountType) {
@@ -84,11 +87,24 @@ public class Account {
         transaction.setAccount(this);
         transactions.add(transaction);
     }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     public AccountType getAccountType() {
         return accountType;
     }
 
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 }

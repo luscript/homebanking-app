@@ -22,6 +22,10 @@ public class Card {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     public Card() { }
     public Card(String cardholder, String number, Integer cvv, LocalDate fromDate, LocalDate thruDate, CardType type,
                 CardColor color) {
@@ -104,5 +108,13 @@ public class Card {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
