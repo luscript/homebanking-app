@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class Card {
@@ -25,6 +26,9 @@ public class Card {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
     private Account account;
+
+    @OneToMany(mappedBy = "card", fetch = FetchType.EAGER)
+    private Set<Payment> payments;
 
     public Card() { }
     public Card(String cardholder, String number, Integer cvv, LocalDate fromDate, LocalDate thruDate, CardType type,
@@ -116,5 +120,16 @@ public class Card {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void addPayment(Payment payment) {
+        this.payments.add(payment);
+    }
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
     }
 }

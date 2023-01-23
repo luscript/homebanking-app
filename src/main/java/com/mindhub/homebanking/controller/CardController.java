@@ -62,7 +62,7 @@ public class CardController {
         return number;
     }
 
-    @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
+    @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> register (
             @RequestParam CardColor color, @RequestParam CardType type, @RequestParam String accountNumber,
             Authentication authentication) {
@@ -82,39 +82,18 @@ public class CardController {
         int cvv = random.nextInt(999-111) + 111;
         Card card = new Card(client.getFirstName() + " " + client.getLastName(), number, cvv,
                 LocalDate.now(), LocalDate.now().plusYears(5), type, color);
-        cardService.save(card);
         client.addCard(card);
         clientService.save(client);
-       if(type.equals(CardType.DEBIT)) {
-           Account account = accountService.findByNumber(accountNumber);
-           account.setCard(card);
-           accountService.save(account);
-       }
+        Account account = accountService.findByNumber(accountNumber);
+        card.setAccount(account);
+        cardService.save(card);
+        account.setCard(card);
+        accountService.save(account);
+        System.out.println(account.getCard().getNumber());
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @Transactional
-    @CrossOrigin(origins = "http://127.0.0.1:5501")
-    @PostMapping("/receive-payment")
-    public ResponseEntity<Object> receivePayment(@RequestParam String cardNumber, @RequestParam Integer cvv,
-                                                 @RequestParam Double amount, @RequestParam String description) {
-        Card card = cardService.findByNumber(cardNumber);
-        if(card == null)
-            return new ResponseEntity<>("Card doesn't exist", HttpStatus.FORBIDDEN);
-        if (!Objects.equals(card.getCvv(), cvv))
-            return new ResponseEntity<>("Wrong card information", HttpStatus.FORBIDDEN);
 
-        Account account = card.getAccount();
-        if(account != null) {
-            Transaction transaction = new Transaction(TransactionType.DEBIT, amount, description, LocalDateTime.now(),
-                    account.getBalance()-amount);
-            Set<Transaction> transactions = account.getTransactions();
-            transactions.add(transaction);
-            account.setTransactions(transactions);
-            account.setBalance(account.getBalance()-amount);
-            accountService.save(account);
-        }
-        return new ResponseEntity<>("Payment received", HttpStatus.ACCEPTED);
-    }
 
 }

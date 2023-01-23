@@ -63,19 +63,19 @@ createApp({
             axios({
                 method: 'post',
                 url: 'http://localhost:8080/api/download-pdf',
-                responseType: 'blob', // important,
+                responseType: 'blob',
                 headers: { 'Content-Type': 'application/json' },
-                data: JSON.stringify({transactions: this.transactions})
-              }).then((response) => {
+                data: JSON.stringify(this.transactions)
+            }).then((response) => {
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', 'table.pdf'); //or any other extension
+                link.setAttribute('download', 'table.pdf');
                 document.body.appendChild(link);
                 link.click();
-              }).catch((error) => {
+            }).catch((error) => {
                 console.log(error);
-              });
+            });
         }
         /* downloadPDF() {
         

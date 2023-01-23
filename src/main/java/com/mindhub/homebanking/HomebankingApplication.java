@@ -83,9 +83,14 @@ public class HomebankingApplication {
 			dante.setEnabled(true);
 			admin.setEnabled(true);
 
+			card1.setAccount(account1);
+			card2.setAccount(account1);
+
 			lucia.addCard(card1);
 			lucia.addCard(card2);
 			dante.addCard(card3);
+
+
 
 
 			clientRepository.save(lucia);
