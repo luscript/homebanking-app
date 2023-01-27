@@ -39,6 +39,7 @@ createApp({
 			}
 		},
 		signup() {
+			console.log(this.password)
 			if (!this.firstName || !this.lastName || !this.email || !this.password) {
 				Swal.fire('Please fill in all inputs', ':C', 'error')
 			} else if (!this.email.includes('@') || !this.email.includes('.')) {

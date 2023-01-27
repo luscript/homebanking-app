@@ -79,7 +79,11 @@ createApp({
                         console.log(data);
                         this.loadData();
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => {
+                        if(err.response.data == "Cannot delete accounts that have money") {
+                            Swal.fire('Cannot delete accounts with balance', ':c', 'error')
+                        }
+                    })
             }
         }
     },

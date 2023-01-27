@@ -77,6 +77,12 @@ public class LoanController {
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
 
     }
+    
+    /* Y así, la viajera temía que su interminable travesía fuera completamente agonizante,
+    pero encontró formas de lidiar y canalizar aquel sentimiento que irrumpía en lo más profundo
+    de su corazón, generando una coraza que la protegería ante cualquier forma de peligro que
+    quisiera atormentarla.
+ */
 
     @PostMapping(path = "/create-loan")
     public ResponseEntity<Object>  createLoan(@RequestParam List<Integer> payments, @RequestParam String name) {

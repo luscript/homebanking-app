@@ -95,7 +95,7 @@ public class ClientController {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(client.getEmail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setFrom("chand312902@gmail.com");
+
         mailMessage.setText("To confirm your account, please click here : "
                 +"http://localhost:8080/web/confirm-account.html?token="+confirmationToken.getConfirmationToken());
 
@@ -103,6 +103,18 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
+
+    /* Muchas veces un sentimiento abrumador se apodera completamente de mí.
+   Y no se supone que debería sentirlo de esa manera; sentir como si las
+   emociones de pronto fueran tangibles, tuvieran identidad propia y fueran
+   capaces de dañarte a golpes.
+   Transitar la vida siendo tan sensible muchas veces es una mierda, pero no
+   dejo de visibilizar que aquellos sentimientos buenos también cobran vida.
+   Pasan por mi ventana, pasean por mi patio, los puedo saludar.
+   Tristeza muchas veces se empecina en hacerme miserable aunque lo cierto es que
+   ella es la que me hace percibir las cosas como las percibo. Sin ella no sería capaz
+   de admirar el arte.
+ */
 
     @RequestMapping(path="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<Object> confirmUserAccount(@RequestParam("token")String confirmationToken)

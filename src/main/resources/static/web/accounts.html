@@ -152,6 +152,7 @@
                     </div>
                 </header>
                 <!-- Main -->
+                
                 <div class="main d-flex flex-column justify-content-center align-content-center flex-grow-1"
                     >
                     <div class="container-fluid d-flex flex-column " style="height: 100%;">
@@ -170,7 +171,7 @@
                                                     number</span>
                                                 <span class="h3 font-semibold  d-block mb-2">{{account.number}}</span>
                                                 <span class="h6 font-semibold text-sm d-block ">Balance</span>
-                                                <span class="h3 font-bold mb-0">${{account.balance}}</span>
+                                                <span class="h3 font-bold mb-0">${{account.balance.toLocaleString()}}</span>
                                                 <span class="h6 font-semibold text-sm d-block mb-2 mt-2">Type</span>
                                                 <span class="h4 font-bold mb-0">{{account.accountType}}</span>
                                             </div>
@@ -216,7 +217,7 @@
                                             <div class="col">
                                                 <span class="h3 font-semibold  d-block mb-2">{{loan.name}} loan</span>
                                                 <span class="h6 font-semibold text-sm d-block mb-2">Amount</span>
-                                                <span class="h3 font-bold mb-0">${{loan.amount}}</span>
+                                                <span class="h3 font-bold mb-0">${{loan.amount.toLocaleString()}}</span>
                                             </div>
                                             <div class="col-auto" style="margin-top: -.5rem;">
                                                 <i class="bi bi-piggy-bank-fill" style="color: white; font-size: 2rem;" ></i>
