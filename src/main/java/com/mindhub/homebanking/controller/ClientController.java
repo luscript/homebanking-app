@@ -138,7 +138,7 @@ public class ClientController {
             mailMessage.setSubject("Complete Registration!");
             mailMessage.setFrom("chand312902@gmail.com");
             mailMessage.setText("To confirm your account, please click here : "
-                    +"http://localhost:8080/web/confirm-account.html?token="+newToken.getConfirmationToken());
+                    +"https://homebanking-app-production.up.railway.app/web/confirm-account.html?token="+newToken.getConfirmationToken());
 
             emailSenderService.sendEmail(mailMessage);
             return new ResponseEntity<>("invalid link or expired token. We sent you a new one",HttpStatus.FORBIDDEN);
@@ -161,7 +161,7 @@ public class ClientController {
         mailMessage.setSubject("Change password");
         mailMessage.setFrom("chand312902@gmail.com");
         mailMessage.setText("To change your password, please click here : "
-                +"http://localhost:8080/web/reset-password.html?token="+passwordResetToken.getPasswordResetToken());
+                +"https://homebanking-app-production.up.railway.app/web/reset-password.html?token="+passwordResetToken.getPasswordResetToken());
 
         emailSenderService.sendEmail(mailMessage);
 
