@@ -29,6 +29,7 @@ dependencies {
 	implementation 'org.microprofile-ext.restclient-ext:configurable-errorresponse-handler:1.0.0'
 	implementation 'com.itextpdf:itext-pdfa:5.5.13.3'
 	implementation 'org.webjars.npm:vxe-table:3.4.2'
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'

@@ -16,13 +16,13 @@
     <div id="app">
         <div class="d-none d-lg-flex container" id="container">
             <div class="form-container-lg sign-up-container">
-                <form>
+                <form @submit.prevent="signup">
                     <h1 class="mb-4">Create Account</h1>
                     <input type="text" placeholder="First name" v-model="firstName" />
                     <input type="text" placeholder="Last name" v-model="lastName" />
                     <input type="email" placeholder="Email" v-model="email" />
                     <input type="password" placeholder="Password" v-model="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required oninvalid="this.setCustomValidity('Password must contain at least one uppercase letter, one lowercase letter, and one number, and be at least 8 characters long.');" oninput="this.setCustomValidity('');"/>
-                    <button class="mt-4" @submit="signup">Sign Up</button>
+                    <button class="mt-4" type="submit">Sign Up</button>
                 </form>
             </div>
             <div class="form-container-lg sign-in-container">

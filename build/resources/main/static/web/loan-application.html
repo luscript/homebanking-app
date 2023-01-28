@@ -199,7 +199,7 @@
 
                                 </div>
                                 <h6 v-if="chosenLoanName != undefined">Loan interest is {{chosenLoan.percentage}}%</h6>
-                                <span v-if="!isNaN(amount) && this.chosenLoanName != undefined && !amount<1" class="mb-8 mt-4">The
+                                <span v-if="!isNaN(amount) && this.chosenLoanName != undefined && amount>0" class="mb-8 mt-4">The
                                     total amount you'll have to pay is ${{(amount +
                                     amount*(this.chosenLoan.percentage/100))}}</span>
                                     <button type="submit" class="btn btn-primary mb-4 mt-4" @click.prevent="requestLoan">Request

@@ -21,7 +21,9 @@ createApp({
                 console.log('passwords do not match')
             } else {
                 axios.post('http://localhost:8080/api/reset-password', `token=${finalUrl}&password=${this.password}`)
-                    .then(res => console.log(res))
+                    .then(res => {
+                        
+                    })
                     .catch(err => console.log(err))
             }
         }
