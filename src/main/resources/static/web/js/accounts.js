@@ -14,7 +14,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(data => {
                     this.client = data.data;
                     this.accounts = data.data.accounts;
@@ -26,7 +26,7 @@ createApp({
                 .catch(err => console.log(err))
         },
         click() {
-            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
+            axios.post('/api/logout').then(response => window.location.href = "/web/index.html")
         },
         async createAccount() {
             const inputOptions = new Promise((resolve) => {
@@ -57,7 +57,7 @@ createApp({
                     showCancelButton: true
                 })
                 if (question) {
-                    axios.post('http://localhost:8080/api/clients/current/accounts', `accountType=${accountType}`)
+                    axios.post('/api/clients/current/accounts', `accountType=${accountType}`)
                         .then(data => {
                             console.log(data);
                             this.loadData();
@@ -74,7 +74,7 @@ createApp({
                 showCancelButton: true
             })
             if (question) {
-                axios.patch(`http://localhost:8080/api/clients/current/accounts/${account.id}`)
+                axios.patch(`/api/clients/current/accounts/${account.id}`)
                     .then(data => {
                         console.log(data);
                         this.loadData();

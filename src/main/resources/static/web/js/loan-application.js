@@ -20,12 +20,12 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(data => {
                     this.client = data.data;
                     this.accounts = data.data.accounts;
                     console.log(this.client)
-                    axios.get('http://localhost:8080/api/loans')
+                    axios.get('/api/loans')
                         .then(data => {
                             this.loans = data.data;
                             console.log(this.loans);
@@ -35,7 +35,7 @@ createApp({
                 .catch(err => console.log(err))
         },
         click() {
-            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
+            axios.post('/api/logout').then(response => window.location.href = "/web/index.html")
         },
         createAccount() {
             axios.post()
@@ -66,7 +66,7 @@ createApp({
                 console.log(question)
                 if(question) {
                     console.log('listo')
-                    axios.post('http://localhost:8080/api/clients/current/loans', 
+                    axios.post('/api/clients/current/loans', 
                     {
                         id: this.chosenLoan.id, 
                         amount: this.amount, 

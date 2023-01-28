@@ -23,7 +23,7 @@ createApp({
 				Swal.fire('Please use a valid email', ':C', 'error')
 			} else {
 				axios.post('/api/login', `email=${this.email}&password=${this.password}`)
-					.then(response => window.location.href = "http://localhost:8080/web/accounts.html")
+					.then(response => window.location.href = "/web/accounts.html")
 					.catch(err => {
 						let error = err.response.data.message;
 						console.log(error);
@@ -46,7 +46,7 @@ createApp({
 				Swal.fire('Please use a valid email', ':C', 'error')
 			} else {
 				axios.post('/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
-					.then(response => window.location.href = "http://localhost:8080/web/process_register.html")
+					.then(response => window.location.href = "/web/process_register.html")
 					.catch(err => Swal.fire('User already registered', ':C', 'error'))
 			}
 		}

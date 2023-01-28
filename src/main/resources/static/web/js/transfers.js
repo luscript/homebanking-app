@@ -19,7 +19,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(data => {
                     this.client = data.data;
                     this.accounts = data.data.accounts;
@@ -28,7 +28,7 @@ createApp({
                 .catch(err => console.log(err))
         },
         click() {
-            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
+            axios.post('/api/logout').then(response => window.location.href = "/web/index.html")
         },
         createAccount() {
             axios.post()
@@ -65,7 +65,7 @@ createApp({
                 console.log(question)
                 if (question) {
                     console.log('listo')
-                    axios.post('http://localhost:8080/api/clients/current/transactions', `amount=${this.amount}&description=${this.description}&originNumber=${this.originAccount}&destinyNumber=${this.destinyAccount}`)
+                    axios.post('/api/clients/current/transactions', `amount=${this.amount}&description=${this.description}&originNumber=${this.originAccount}&destinyNumber=${this.destinyAccount}`)
                         .then(response => {
                             console.log(response);
                             swal.fire('Done!', 'your transaction has been sent', 'success')

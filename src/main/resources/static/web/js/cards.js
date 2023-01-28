@@ -24,7 +24,7 @@ createApp({
             this.date = new Date().toISOString().split('T')[0]
             console.log(this.date)
             console.log(this.cards)
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(data => {
                     this.client = data.data;
                     this.cards = data.data.cards;
@@ -35,7 +35,7 @@ createApp({
                 .catch(err => console.log(err))
         },
         click() {
-            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
+            axios.post('/api/logout').then(response => window.location.href = "/web/index.html")
         },
         async createCard() {
             if(!this.toAccount) {
@@ -51,7 +51,7 @@ createApp({
                     showCancelButton: true
                 })
                 if(question) {
-                    axios.post('http://localhost:8080/api/clients/current/cards', `color=${this.color}&type=${this.type}&accountNumber=${this.toAccount}`)
+                    axios.post('/api/clients/current/cards', `color=${this.color}&type=${this.type}&accountNumber=${this.toAccount}`)
                     .then(response => this.loadData())
                     .catch(err => swal.fire(`You already have a ${this.type} ${this.color} card`, "we're sorry :P", 'error'))
                 }
@@ -62,7 +62,7 @@ createApp({
             console.log(this.cardNumber)
             let cardId = this.cards.find(card => card.number == this.cardNumber)
             console.log(cardId.id)
-            axios.delete(`http://localhost:8080/api/clients/current/cards?id=${cardId.id}`)
+            axios.delete(`/api/clients/current/cards?id=${cardId.id}`)
                 .then(response => {
                     swal.fire(`Card succesfully deleted`, ":)", 'success');
                     this.loadData();
