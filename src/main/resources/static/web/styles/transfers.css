@@ -8,6 +8,9 @@
 /* Bootstrap Icons */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
+[v-cloak] {
+    display: none;
+}
 
 h1, h4 {
     color: white !important;

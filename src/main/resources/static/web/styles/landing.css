@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 body {
     background: #f6f5f7;    
     background-image: url(../assets/bryan-goff-f7YQo-eYHdM-unsplash.jpg);
