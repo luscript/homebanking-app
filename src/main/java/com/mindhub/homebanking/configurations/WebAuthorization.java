@@ -38,8 +38,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                         "/api/clients/current/cards", "/api/clients/current/transactions","/api/clients/current/loans",
                         "/api/confirm-account","/api/password-token", "/api/reset-password")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/clients", "/api/accounts", "/api/cards").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/clients/current/loans", "/api/clients/current/cards", "/api/loans").hasAnyAuthority()
+                .antMatchers(HttpMethod.GET, "/api/clients", "/api/loans", "/api/accounts", "/api/cards").hasAnyAuthority()
                 .antMatchers(HttpMethod.PUT, "/api/clients/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/api/clients/**").hasAnyAuthority("ADMIN", "CLIENT")
                 .antMatchers(HttpMethod.GET,"/api/confirm-account").hasRole("ADMIN")
