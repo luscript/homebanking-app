@@ -97,7 +97,7 @@ public class ClientController {
         mailMessage.setSubject("Complete Registration!");
 
         mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8080/web/confirm-account.html?token="+confirmationToken.getConfirmationToken());
+                +"https://homebanking-app-production.up.railway.app/web/confirm-account.html?token="+confirmationToken.getConfirmationToken());
 
         emailSenderService.sendEmail(mailMessage);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -121,7 +121,7 @@ public class ClientController {
     {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
         LocalDateTime today = LocalDateTime.now().minusHours(24);
-
+        System.out.println(confirmationToken);
         if(token != null || today.isAfter(token.getCreatedDate()))
         {
             Client client = clientService.findByEmail(token.getClient().getEmail());

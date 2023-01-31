@@ -57,12 +57,12 @@ createApp({
             return style;
         },
         click() {
-            axios.post('/api/logout').then(response => window.location.href = "http://localhost:8080/web/index.html")
+            axios.post('/api/logout').then(response => window.location.href = "/web/index.html")
         },
         downloadPDF() {
             axios({
                 method: 'post',
-                url: 'http://localhost:8080/api/download-pdf',
+                url: '/api/download-pdf',
                 responseType: 'blob',
                 headers: { 'Content-Type': 'application/json' },
                 data: JSON.stringify(this.transactions)
@@ -138,7 +138,7 @@ createApp({
                 lastxdays = '';
                 this.thru_date = '';
             }
-            axios.get(`http://localhost:8080/api/accounts/${id}`, {
+            axios.get(`/api/accounts/${id}`, {
                 params: {
                     from_date: lastxdays + '000',
                     thru_date: this.today + '000'
@@ -162,7 +162,7 @@ createApp({
                 const urlParams = new URLSearchParams(window.location.search);
                 const id = urlParams.get('id');
 
-                axios.get(`http://localhost:8080/api/accounts/${id}`, {
+                axios.get(`/api/accounts/${id}`, {
                     params: {
                         from_date,
                         thru_date

@@ -9,7 +9,7 @@ createApp({
         }
     },
     created() {
-        axios.get('http://localhost:8080/api/clients/1')
+        axios.get('/api/clients/1')
             .then(data => {
                 this.client = data.data;
                 this.accounts = data.data.accounts;

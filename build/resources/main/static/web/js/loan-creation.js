@@ -14,7 +14,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
                 .then(data => {
                     this.client = data.data;
                     console.log(this.client)
@@ -33,7 +33,7 @@ createApp({
                     showCancelButton: true
                 })
                 if (question) {
-                    axios.post('http://localhost:8080/api/create-loan', `payments=${this.selectedPayments.join(',')}&name=${this.loanName}`)
+                    axios.post('/api/create-loan', `payments=${this.selectedPayments.join(',')}&name=${this.loanName}`)
                         .then(res => Swal.fire('Yikes!', 'Now we are going to encourage people to become indebted!', 'success'))
                         .catch(err => {
                             if(err.response.data == 'loan already exists') {

@@ -38,7 +38,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                         "/api/clients/current/cards", "/api/clients/current/transactions","/api/clients/current/loans",
                         "/api/confirm-account","/api/password-token", "/api/reset-password")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/clients").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/clients", "/api/loans", "/api/accounts", "/api/cards").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/clients/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/api/clients/**").hasAnyAuthority("ADMIN", "CLIENT")
                 .antMatchers(HttpMethod.GET,"/api/confirm-account").hasRole("ADMIN")
@@ -70,6 +70,8 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
 
         // if login is successful, just clear the flags asking for authentication
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
+
+        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendRedirect("/web/index.html"));
 
         // if login fails, just send an authentication failure response
         http.formLogin().failureHandler((req, res, exc) -> {
